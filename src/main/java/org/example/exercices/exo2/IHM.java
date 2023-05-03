@@ -172,7 +172,6 @@ public class IHM {
         String firstName = scanner.nextLine();
         System.out.print("Merci de saisir le tel : ");
         String tel = scanner.nextLine();
-
         Contact contact = new Contact(firstName, lastName, tel);
         try {
             if(contact.save()) {

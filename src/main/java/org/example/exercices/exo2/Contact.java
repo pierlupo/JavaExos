@@ -93,7 +93,7 @@ public class Contact {
     }
 
     public boolean save() throws SQLException {
-        request = "INSERT INTO contact (nom, prenom, tel) values (?,?,?)";
+        request = "INSERT INTO contact (firstName, lastName, phone) values (?,?,?)";
         connection = new DataBaseExo2Manager().getConnection();
         statement = connection.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, getFirstName());
