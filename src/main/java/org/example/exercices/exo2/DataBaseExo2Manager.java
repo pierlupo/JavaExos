@@ -10,7 +10,7 @@ public class DataBaseExo2Manager {
 
         private static final String USER = "root";
 
-        private static final String PASSWORD = "Guerrier@777";
+        private static final String PASSWORD = "*********";
 
         public Connection getConnection() throws SQLException
         {
