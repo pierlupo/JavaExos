@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class IHM {
 
     private Scanner scanner;
-
+    String choix;
     public  IHM() {
         scanner = new Scanner(System.in);
     }
@@ -22,7 +22,7 @@ public class IHM {
 
                     break;
                 case "2":
-                    MenugetContactAction();
+                    editContactAction();
 
                     break;
                 case "3":
@@ -30,14 +30,14 @@ public class IHM {
 
                     break;
                 case "4":
-                  //  updateContactAction();
+                    searchContactsAction();
 
                     break;
 
-                case "0":
-                  //  quitAction();
-
-                    break;
+//                case "0":
+//                  //  quitAction();
+//
+//                    break;
 
 //                default:
 //
@@ -48,46 +48,46 @@ public class IHM {
         }while (!choix.equals("0"));
 
     }
-    public void MenugetContactAction () {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("==== Recherche de Contacts ====");
-        System.out.println();
-
-        String[] propositions = {"1- Touver un contact par son nom", "2- Touver un contact par son prénom", "3-Touver un contact par son tel", "0- Retour", "Entrez votre choix : "};
-
-        for (String prop : propositions) {
-            System.out.println(prop);
-        }
-
-        String answer = sc.next();
-
-
-        switch (answer) {
-            case "1":
-                getByFirstName();
-                MenugetContactAction();
-
-            case "2":
-                getByLastname();
-                menu();
-
-            case "3":
-                getByTel();
-                menu();
-            case "4":
-
-                MenugetContactAction();
-                menu();
-
-            case "0":
-                break;
-
-            default:
-                System.out.println("Je n'ai pas compris votre demande ");
-                MenugetContactAction();
-        }
-        menu();
-    }
+//    public void MenugetContactAction () {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("==== Recherche de Contacts ====");
+//        System.out.println();
+//
+//        String[] propositions = {"1- Touver un contact par son nom", "2- Touver un contact par son prénom", "3-Touver un contact par son tel", "0- Retour", "Entrez votre choix : "};
+//
+//        for (String prop : propositions) {
+//            System.out.println(prop);
+//        }
+//
+//        String answer = sc.next();
+//
+//
+//        switch (answer) {
+//            case "1":
+//                getByFirstName();
+//                MenugetContactAction();
+//
+//            case "2":
+//                getByLastname();
+//                menu();
+//
+//            case "3":
+//                getByTel();
+//                menu();
+//            case "4":
+//
+//                MenugetContactAction();
+//                menu();
+//
+//            case "0":
+//                break;
+//
+//            default:
+//                System.out.println("Je n'ai pas compris votre demande ");
+//                MenugetContactAction();
+//        }
+//        menu();
+//    }
 
     private void menu() {
         System.out.println("1 - Ajouter un contact ");
@@ -116,6 +116,28 @@ public class IHM {
         }
     }
 
+
+    private void addEmailsAction(int contactId) {
+
+        do {
+            System.out.print("Ajouter un email ? (O/N) ");
+            choix = scanner.nextLine();
+            if(choix.equals("O")) {
+                System.out.print("Merci de saisir le mail : ");
+                String mail = scanner.nextLine();
+                Email email = new Email(mail, contactId);
+                try {
+                    if(email.save()) {
+                        System.out.println("Mail ajouté");
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }while (!choix.equals("N"));
+    }
+
+
     private void deleteContactByIdAction() {
         System.out.print("Merci de saisir l'id du contact : ");
         int id = scanner.nextInt();
@@ -136,8 +158,13 @@ public class IHM {
 
     }
 
+//    private void getByFirstName(){
+//        System.out.print("Merci de saisir le nom : ");
+//        String lastName = scanner.nextLine();
+//
+//    };
 
-    private void updateContactAction()  {
+    private void editContactAction()  {
         System.out.println("**** Modifier un contact ****");
         System.out.print("Merci de saisir le nom : ");
         String lastName = scanner.nextLine();
@@ -155,6 +182,39 @@ public class IHM {
             System.out.println(e.getMessage());
         }
     }
+    private void searchContactsAction() {
+        System.out.print("Merci de saisir le mot de recherche : ");
+        String word = scanner.nextLine();
+        try {
+            Contact.search(word).forEach(c-> {
+                System.out.println(c);
+                try {
+                    c.setEmails(Email.getEmailsByContactId(c.getId()));
+                    c.getEmails().forEach(e -> {
+                        System.out.println(e);
+                    });
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-
+    private Contact getContactAction() {
+        System.out.print("Merci de saisir l'id : ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        try {
+            Contact contact = Contact.getById(id);
+            if (contact == null) {
+                System.out.println("Aucun contact avec cet id");
+            }
+            return contact;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }
