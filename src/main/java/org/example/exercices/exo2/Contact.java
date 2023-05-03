@@ -109,7 +109,7 @@ public class Contact {
     }
 
     public boolean update() throws SQLException {
-        request = "UPDATE contact SET nom = ?, prenom = ?, tel = ? WHERE ID = ?";
+        request = "UPDATE contact SET nom = ?, prenom = ?, tel = ? WHERE id = ?";
         connection = new DataBaseExo2Manager().getConnection();
         statement = connection.prepareStatement(request);
         statement.setString(1, getFirstName());
@@ -122,7 +122,7 @@ public class Contact {
     }
 
     public boolean delete() throws SQLException {
-        request = "DELETE FROM contact WHERE contact_id = ?";
+        request = "DELETE FROM contact WHERE id = ?";
         connection = new DataBaseExo2Manager().getConnection();
         statement = connection.prepareStatement(request);
         statement.setInt(1, getId());
@@ -133,13 +133,13 @@ public class Contact {
 
     public static Contact getById(int id) throws SQLException {
         Contact contact = null;
-        request = "SELECT * FROM contact WHERE contact_id = ?";
+        request = "SELECT * FROM contact WHERE id = ?";
         connection = new DataBaseExo2Manager().getConnection();
         statement = connection.prepareStatement(request);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
-            contact = new Contact(resultSet.getInt("contact_id"),resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("tel"));
+            contact = new Contact(resultSet.getInt("id"),resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("tel"));
         }
         return contact;
     }
@@ -194,7 +194,7 @@ public class Contact {
         statement.setString(3, word + "%");
         resultSet = statement.executeQuery();
         while (resultSet.next()) {
-            Contact contact = new Contact(resultSet.getInt("contact_id"),
+            Contact contact = new Contact(resultSet.getInt("id"),
                     resultSet.getString("nom"),
                     resultSet.getString("prenom"),
                     resultSet.getString("tel"));

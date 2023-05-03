@@ -91,9 +91,9 @@ public class IHM {
 
     private void menu() {
         System.out.println("1 - Ajouter un contact ");
-        System.out.println("2 - Rechercher un contact");
+        System.out.println("2 - Modifier un contact");
         System.out.println("3 - Supprimer un contact");
-        System.out.println("4 - Modifier un contact");
+        System.out.println("4 - Recherche de contact");
         System.out.println("0 - Quitter");
 
     }
