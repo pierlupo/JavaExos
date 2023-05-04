@@ -61,7 +61,7 @@ public class IHM {
 
     private Customer createCustomerAction() {
         Customer customer = null;
-        System.out.print("Merci de saisir le nom : ");
+        System.out.print("name : ");
         String lastName = scanner.nextLine();
         System.out.print("Merci de saisir le prénom : ");
         String firstName = scanner.nextLine();
