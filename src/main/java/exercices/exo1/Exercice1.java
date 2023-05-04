@@ -1,4 +1,4 @@
-package org.example.exercices.exo1;
+package exercices.exo1;
 
 import java.sql.*;
 import java.util.Scanner;

@@ -1,7 +1,6 @@
-package org.example.exercices.exo3;
+package exercices.exo3;
 
-import org.example.exercices.exo2.Contact;
-import org.example.exercices.exo2.DataBaseExo2Manager;
+import exercices.exo2.DataBaseExo2Manager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,6 +1,4 @@
-package org.example.exercices.exo3;
-
-import org.example.exercices.exo2.DataBaseExo2Manager;
+package exercices.exo3;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +18,22 @@ public class Operation extends BaseJDBC{
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setStatus(OperationStatus status) {
+        this.status = status;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public double getAmount() {

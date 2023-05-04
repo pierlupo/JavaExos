@@ -1,4 +1,4 @@
-package org.example.exercices.exo3;
+package exercices.exo3;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

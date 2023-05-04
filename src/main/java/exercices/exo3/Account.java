@@ -1,8 +1,5 @@
-package org.example.exercices.exo3;
+package exercices.exo3;
 
-import org.example.exercices.exo3.DataBaseExo3Manager;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;

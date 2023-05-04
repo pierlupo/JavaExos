@@ -1,10 +1,10 @@
-package org.example.exercices.exo2;
+package exercices.exo3;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataBaseExo2Manager {
+public class DataBaseExo3Manager {
 
         private static final String URI = "jdbc:mysql://localhost:3306/exercice2_jdbc";
 

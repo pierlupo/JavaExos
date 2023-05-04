@@ -1,12 +1,12 @@
-package org.example.exercices.exo1;
+package org.example.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataBaseExo1Manager {
+public class DataBaseManager {
 
-    private static final String URI = "jdbc:mysql://localhost:3306/exercice1_jdbc";
+    private static final String URI = "jdbc:mysql://localhost:3306/cours_jdbc";
 
     private static final String USER = "root";
 

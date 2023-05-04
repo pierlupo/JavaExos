@@ -1,4 +1,4 @@
-package org.example.exercices.exo2;
+package exercices.exo2;
 
 import java.sql.SQLException;
 import java.util.Scanner;

@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.exercices.exo1.Exercice1;
-import org.example.exercices.exo2.Contact;
-import org.example.exercices.exo2.IHM;
+import exercices.exo3avectransaction.IHM;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,6 +55,10 @@ public class Main {
 // Exercice1.Demo();
 
 
+        //new IHM().start();
+        //exo 3
+        //new IHM().start();
+        //exo3bis
         new IHM().start();
 
    }
