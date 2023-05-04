@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DataBaseExo3Manager {
 
-        private static final String URI = "jdbc:mysql://localhost:3306/exercice2_jdbc";
+        private static final String URI = "jdbc:mysql://localhost:3306/exercice3_jdbc";
 
         private static final String USER = "root";
 

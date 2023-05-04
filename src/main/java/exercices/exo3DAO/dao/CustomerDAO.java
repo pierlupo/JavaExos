@@ -22,11 +22,13 @@ public class CustomerDAO extends BaseDAO<Customer> {
         statement.setString(1, element.getFirstName());
         statement.setString(2, element.getLastName());
         statement.setString(3, element.getPhone());
+        int rowNb =statement.executeUpdate();
         resultSet = statement.getGeneratedKeys();
+
         if(resultSet.next()){
             element.setId(resultSet.getInt(1));
         }
-        int rowNb =statement.executeUpdate();
+
 
         return rowNb == 1;
     }

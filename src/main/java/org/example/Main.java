@@ -1,6 +1,8 @@
 package org.example;
 
-import exercices.exo3avectransaction.IHM;
+import exercices.exo3DAO.IHM;
+
+import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,9 +61,12 @@ public class Main {
         //exo 3
         //new IHM().start();
         //exo3bis
+        //new IHM().start();
+        //exo3DAO
         new IHM().start();
 
-   }
+
+    }
 
 
 }

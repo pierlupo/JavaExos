@@ -30,7 +30,7 @@ public class IHM {
         scanner = new Scanner(System.in);
     }
 
-    public void start() throws SQLException {
+    public void start() {
         do {
             menu();
             choix = scanner.nextLine();
@@ -56,6 +56,7 @@ public class IHM {
         System.out.println("2 - Dépôt ");
         System.out.println("3 - Retrait ");
         System.out.println("4 - Affichage compte ");
+        System.out.println("0 - Quitter ");
     }
 
     private Customer createCustomerAction() {
@@ -88,11 +89,12 @@ public class IHM {
 
     private void createAccountAction() {
         Customer customer = createCustomerAction();
+        accountDAO = new AccountDAO(connection);
         if (customer != null) {
             BankAccount bankAccount = new BankAccount(customer.getId(), 0);
             try {
                 if (accountDAO.save(bankAccount)) {
-                    System.out.println("Compté créé avec l'id " + bankAccount.getId());
+                    System.out.println("Compte créé avec l'id " + bankAccount.getId());
                 }
                 connection.commit();
             } catch (SQLException e) {
@@ -109,7 +111,6 @@ public class IHM {
 
     private void depositAction() {
         BankAccount bankAccount = getAccountAction();
-
         System.out.print("Merci de saisir le montant du dépôt : ");
         double montant = scanner.nextDouble();
         scanner.nextLine();
@@ -144,6 +145,9 @@ public class IHM {
         scanner.nextLine();
         Operation operation = new Operation(montant * -1, bankAccount.getId());
         try {
+            connection = new DataBaseManager().getConnection();
+            accountDAO = new AccountDAO(connection);
+            operationDAO = new OperationDAO(connection);
             if (bankAccount.makeWithDrawl(operation) && operationDAO.save(operation) && accountDAO.update(bankAccount)) {
                 System.out.println("Retrait Ok");
             }
