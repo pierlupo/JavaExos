@@ -1,6 +1,6 @@
 package org.example;
 
-import exercices.exo4.IHM;
+import exercices.exo5.IHM;
 
 import java.sql.SQLException;
 
@@ -65,9 +65,9 @@ public class Main {
         //exo3DAO
         //new IHM().start();
         //exo4
+        //new IHM().start();
+        //exo5
         new IHM().start();
-
-
     }
 
 
