@@ -10,7 +10,7 @@ public class DataBaseManager {
 
     private static final String USER = "root";
 
-    private static final String PASSWORD = "************";
+    private static final String PASSWORD = "Guerrier@777";
 
     public Connection getConnection() throws SQLException
     {

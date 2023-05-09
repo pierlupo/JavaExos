@@ -57,7 +57,7 @@ public class IHM {
         System.out.println("0 - Quit ");
     }
 
-    private Product CreateProductAction(){
+    private Product CreateProductAction() {
         Product product = null;
         System.out.print("Name of the product : ");
         String name = scanner.nextLine();
@@ -90,25 +90,25 @@ public class IHM {
         return product;
     }
 
-    private Product getProductAction(){
+    private Product getProductAction() {
         Product product = null;
-            System.out.print("Merci de saisir l'id : ");
-            int idProduct = scanner.nextInt();
-            scanner.nextLine();
-            try {
-                connection = new DataBaseManager().getConnection();
-                productDAO = new ProductDAO(connection);
-                product = productDAO.getById(idProduct);
-            } catch (SQLException | ExecutionControl.NotImplementedException e) {
-                System.out.println(e.getMessage());
-            }
-            if (product != null) {
-                System.out.println(product);
-            }
-            return product;
+        System.out.print("Merci de saisir l'id : ");
+        int idProduct = scanner.nextInt();
+        scanner.nextLine();
+        try {
+            connection = new DataBaseManager().getConnection();
+            productDAO = new ProductDAO(connection);
+            product = productDAO.getById(idProduct);
+        } catch (SQLException | ExecutionControl.NotImplementedException e) {
+            System.out.println(e.getMessage());
         }
+        if (product != null) {
+            System.out.println(product);
+        }
+        return product;
+    }
 
-    private List<Product> getAllProductAction(){
+    private List<Product> getAllProductAction() {
         List<Product> products = null;
         try {
             connection = new DataBaseManager().getConnection();
@@ -124,12 +124,36 @@ public class IHM {
     }
 
 
+    private Product EditProductAction() {
 
-    private void  EditProductAction(){
-
+        System.out.println("Merci de saisir l'id du produit à modifier");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        Product produit = getProductAction();
+        System.out.print("Merci de saisir le nom du produit : ");
+        produit.setName(scanner.nextLine());
+        System.out.print("Merci de saisir le prix du produit : ");
+        produit.setPrice(scanner.nextDouble());
+        scanner.nextLine();
+        System.out.print("Merci de saisir la quantité des produits : ");
+        produit.setQuantity(scanner.nextInt());
+        scanner.nextLine();
+        System.out.print("Merci de saisir la description du produit : ");
+        produit.setDescription(scanner.nextLine());
+        try {
+            connection = new DataBaseManager().getConnection();
+            productDAO = new ProductDAO(connection);
+            productDAO.update(produit);
+        } catch (SQLException | ExecutionControl.NotImplementedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Produit mis à jour");
+        return produit;
     }
 
+
     private void DeleteProductAction(){
+
         System.out.print("Merci de saisir l'id : ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -147,6 +171,5 @@ public class IHM {
         } catch (SQLException | ExecutionControl.NotImplementedException e) {
             System.out.println(e.getMessage());
         }
-
     }
 }

@@ -3,7 +3,7 @@ package exercices.exo4.model;
 public class Product {
     private int idProduct;
     private String name;
-    private float price;
+    private double price;
     private int quantity;
     private String description;
 
@@ -11,14 +11,14 @@ public class Product {
         this.idProduct = idProduct;
     }
 
-    public Product(String name, float price, int quantity, String description) {
+    public Product(String name, double price, int quantity, String description) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
     }
 
-    public Product(int idProduct, String name, float price, int quantity, String description) {
+    public Product(int idProduct, String name, double price, int quantity, String description) {
         this(name,price,quantity,description);
         this.idProduct = idProduct;
 
@@ -32,7 +32,7 @@ public class Product {
         return name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -48,7 +48,7 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
