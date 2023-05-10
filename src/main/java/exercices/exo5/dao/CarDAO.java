@@ -1,6 +1,6 @@
 package exercices.exo5.dao;
 
-import exercices.exo5.entities.Car;
+import exercices.exo5.entity.Car;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.sql.Connection;
@@ -21,7 +21,7 @@ public class CarDAO extends BaseDAO<Car>{
         statement.setString(1, car.getName());
         statement.setInt(2, car.getYear());
         statement.setInt(3, car.getHorsePower());
-        statement.setDouble(3, car.getPrice());
+        statement.setDouble(4, car.getPrice());
 
         int rowNb = statement.executeUpdate();
         resultSet = statement.getGeneratedKeys();

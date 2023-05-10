@@ -1,4 +1,4 @@
-package exercices.exo5.entities;
+package exercices.exo5.entity;
 
 import java.util.Date;
 

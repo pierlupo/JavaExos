@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DataBaseManager {
 
-    private static final String URI = "jdbc:mysql://localhost:3306/exercice4_jdbc";
+    private static final String URI = "jdbc:mysql://localhost:3306/exercice5_jdbc";
 
     private static final String USER = "root";
 

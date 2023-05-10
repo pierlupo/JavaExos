@@ -1,7 +1,6 @@
 package exercices.exo5.dao;
 
-import exercices.exo5.entities.Car;
-import exercices.exo5.entities.Person;
+import exercices.exo5.entity.Person;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.sql.Connection;
@@ -17,7 +16,7 @@ public class PersonDAO extends BaseDAO<Person>{
 
     @Override
     public boolean save(Person person) throws ExecutionControl.NotImplementedException, SQLException {
-        request = "INSERT INTO person (lastName, firstName, age) values (?,?,?)";
+        request = "INSERT INTO person (last_name, first_name, age) values (?,?,?)";
         statement = _connection.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, person.getLastName());
         statement.setString(2, person.getFirstName());
@@ -37,7 +36,7 @@ public class PersonDAO extends BaseDAO<Person>{
     @Override
     public Person getById(int id) throws ExecutionControl.NotImplementedException, SQLException {
         Person person = null;
-        request = "SELECT * FROM car WHERE id = ?";
+        request = "SELECT * FROM person WHERE id = ?";
         statement = _connection.prepareStatement(request);
         statement.setInt(1, id);
         resultSet = statement.executeQuery();
@@ -66,7 +65,7 @@ public class PersonDAO extends BaseDAO<Person>{
 
     @Override
     public boolean update(Person element) throws ExecutionControl.NotImplementedException, SQLException {
-        request = "UPDATE personne set first_name = ?, last_name = ?, age = ? where id = ?";
+        request = "UPDATE personne set last_name = ?, first_name = ?, age = ? where id = ?";
         statement = _connection.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1,element.getFirstName());
         statement.setString(2,element.getLastName());

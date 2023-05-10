@@ -1,8 +1,6 @@
 package org.example;
 
-import exercices.exo5.IHM;
-
-import java.sql.SQLException;
+import exercices.exo5.util.IHM;
 
 public class Main {
     public static void main(String[] args) {
